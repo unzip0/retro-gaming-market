@@ -1,0 +1,7 @@
+{
+  "name": "retromarket",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
