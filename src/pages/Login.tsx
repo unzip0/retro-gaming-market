@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { IonPage, IonContent, IonButton, IonInput, IonImg, IonGrid, IonRow, IonCol } from "@ionic/react"
 import './Login.css';
 import axios from 'axios';
+import { RouteComponentProps, withRouter  } from "react-router";
 
 
 
-const Login: React.FC = () => {
+const Login: React.FC<RouteComponentProps> = ({ history }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -21,6 +22,7 @@ const Login: React.FC = () => {
         }).then(response => {
             if (response.data.length > 0){
                 console.log('logged');
+                history.push('/home');
             }
             console.log(response);
         }).catch(error => {
@@ -67,4 +69,4 @@ const Login: React.FC = () => {
     )
 }
 
-export default Login
+export default withRouter(Login)
