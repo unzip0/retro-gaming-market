@@ -1,26 +1,68 @@
-import React, { useState, useEffect } from 'react';
-import { IonPage, IonHeader, IonContent, IonToolbar, IonTitle, IonButton } from "@ionic/react"
-
+import React, { useState } from 'react';
+import { IonPage, IonContent, IonButton, IonInput, IonImg, IonGrid, IonRow, IonCol } from "@ionic/react"
+import './Login.css';
+import axios from 'axios';
 
 
 
 const Login: React.FC = () => {
-    const [input, setInput] = useState<string>('')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
-    useEffect(() => {
-        console.log(input)
-    }, [input])
+    function loginUser() {
+        axios({
+            method: 'post',
+            url: 'http://localhost:3000/login',
+            data: {
+                username: username
+                , password: password
+            }
+
+        }).then(response => {
+            if (response.data.length > 0){
+                console.log('logged');
+            }
+            console.log(response);
+        }).catch(error => {
+            console.log(error);
+        });
+    }
 
     return (
         <IonPage>
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>HOME PAGE</IonTitle>
-                </IonToolbar>
-                <IonContent className="ion-padding">
-                    <IonButton routerLink="/login">Login</IonButton>
-                </IonContent>
-            </IonHeader>
+            <IonContent class="ion-padding">
+                <IonGrid>
+                    <IonRow>
+                        <IonCol>
+                            <IonImg class="logo" src="assets/images/rgm.jpg"/>
+                        </IonCol>
+                    </IonRow>
+                    <IonRow>
+                        <IonCol>
+                            <IonInput 
+                                placeholder="Usuario" 
+                                onIonChange={(e: any) => setUsername(e.target.value)}
+                                color="light"
+                            />
+                        </IonCol>
+                    </IonRow>
+                    <IonRow>
+                        <IonCol>
+                            <IonInput 
+                                type="password" 
+                                onIonChange={(e: any) => setPassword(e.target.value)}
+                                placeholder="Password" 
+                                color="light"
+                            />
+                        </IonCol>
+                    </IonRow>
+                    <IonRow> 
+                        <IonCol class="ion-text-center">
+                            <IonButton color="danger" onClick={loginUser}>Login</IonButton>
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
+            </IonContent>
         </IonPage>
     )
 }

@@ -1,0 +1,41 @@
+ion-input {
+    text-align: center;
+}
+/* ion-button {
+    background: #dd163b;
+} */
+ion-content {
+    --background: url('/assets/images/bg-login.webp') no-repeat 52% center/cover;
+    /* opacity: 0.9; */
+}
+ion-grid{
+    padding-top: 10%;
+    vertical-align: middle;
+}
+ion-img {
+    width: 20%;
+}
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    ion-img {
+        width: 20%;
+        display: block;
+        margin:auto;
+    }
+}
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+    /* For tablets: */
+    ion-img {
+        width: 50%;
+        display: block;
+        margin:auto;
+    }
+}
+@media only screen and (max-width: 600px) {
+    /* For mobile phones: */
+    ion-img {
+        width: 50%;
+        display: block;
+        margin:auto;
+    }
+}
