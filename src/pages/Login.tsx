@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { IonPage, IonContent, IonButton, IonInput, IonImg, IonGrid, IonRow, IonCol } from "@ionic/react"
 import './Login.css';
 import axios from 'axios';
 import { RouteComponentProps, withRouter  } from "react-router";
-
-
+import {AppContext} from '../App';
 
 const Login: React.FC<RouteComponentProps> = ({ history }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-
+    const context = useContext(AppContext);
+    console.log(context);
     function loginUser() {
         axios({
             method: 'post',
@@ -22,12 +22,16 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
         }).then(response => {
             if (response.data.length > 0){
                 console.log('logged');
+                context.loggedIn = true;
                 history.push('/home');
             }
             console.log(response);
         }).catch(error => {
             console.log(error);
         });
+        //context.loggedIn = true;
+        //context.setContext(true);
+        console.log(context)
     }
 
     return (

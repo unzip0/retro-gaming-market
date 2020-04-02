@@ -1,9 +1,8 @@
 import React from 'react';
 import { IonContent, IonMenu, IonHeader, IonToolbar, IonTitle, IonList, IonItem, IonRouterOutlet, IonIcon, IonText } from "@ionic/react";
 import './Menu.css';
-import { RouteComponentProps, withRouter  } from "react-router";
 
-const Menu: React.FC<RouteComponentProps> = ({ history }) => {
+const Menu: React.FC = () => {
 
     return (
         <IonMenu side="start" menuId="menu" type="push" contentId="menu">
@@ -42,4 +41,4 @@ const Menu: React.FC<RouteComponentProps> = ({ history }) => {
     )
 }
 
-export default  withRouter(Menu)
+export default  Menu

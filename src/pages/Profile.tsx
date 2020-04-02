@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonPage, IonContent, IonHeader, IonToolbar, IonTitle, IonMenuButton, IonButtons, IonIcon } from "@ionic/react";
+import { IonPage, IonContent, IonHeader, IonToolbar, IonTitle, IonMenuButton, IonButtons, IonIcon, IonText } from "@ionic/react";
 import { RouteComponentProps, withRouter  } from "react-router";
 import Menu from './Menu';
 import './Home.css';
@@ -8,7 +8,6 @@ import './Home.css';
 const Profile: React.FC<RouteComponentProps> = () => {
     return (
         <IonPage>
-            <Menu />
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
@@ -19,9 +18,7 @@ const Profile: React.FC<RouteComponentProps> = () => {
                     <IonTitle>RGM</IonTitle>
                 </IonToolbar>
             </IonHeader>
-            
-            <IonContent>
-            </IonContent>
+                <IonText>Moterfucker</IonText>
         </IonPage>
     )
 }

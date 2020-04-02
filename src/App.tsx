@@ -24,17 +24,38 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Menu from './pages/Menu';
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-          <Route path="/profile" component={Profile} exact />
-          <Route path="/home" component={Home} exact />
-          <Route path="/" component={Login} exact />
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+const defaultContext = {
+  loggedIn: false,
+  user : {
+
+  },
+  setContext: function (context:boolean){
+    this.loggedIn = context
+  }
+}
+
+export const AppContext = React.createContext(defaultContext);
+
+
+const App: React.FC = () => {
+  
+  return (
+  <>
+  <AppContext.Provider value={defaultContext}>
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+            <Route path="/profile" component={Profile} exact />
+            <Route path="/home" component={Home} exact />
+            <Route path="/" component={Login} exact />
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+    <Menu />
+  </AppContext.Provider>
+  </>
+)};
 
 export default App;
