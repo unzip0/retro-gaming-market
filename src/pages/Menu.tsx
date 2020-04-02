@@ -1,8 +1,10 @@
 import React from 'react';
 import { IonContent, IonMenu, IonHeader, IonToolbar, IonTitle, IonList, IonItem, IonRouterOutlet, IonIcon, IonText } from "@ionic/react";
 import './Menu.css';
+import { RouteComponentProps, withRouter  } from "react-router";
 
-const Menu: React.FC = () => {
+const Menu: React.FC<RouteComponentProps> = ({ history }) => {
+
     return (
         <IonMenu side="start" menuId="menu" type="push" contentId="menu">
             <IonHeader>
@@ -12,7 +14,11 @@ const Menu: React.FC = () => {
             </IonHeader>
             <IonContent>
                 <IonList>
-                <IonItem>
+                <IonItem routerLink="/home">
+                    <IonIcon src="assets/icon/home-icon.svg"/> 
+                    <IonText>Inicio</IonText>
+                </IonItem>
+                <IonItem routerLink="/profile">
                     <IonIcon src="assets/icon/user-icon.svg"/> 
                     <IonText>Perfil</IonText>
                 </IonItem>
@@ -24,7 +30,7 @@ const Menu: React.FC = () => {
                     <IonIcon src="assets/icon/list-icon.svg"/> 
                     <IonText>Tus productos</IonText>
                 </IonItem>
-                <IonItem>
+                <IonItem routerLink="/">
                     <IonIcon src="assets/icon/logout-icon.svg"/> 
                     <IonText>Cerrar sesión</IonText>
                 </IonItem>
@@ -36,4 +42,4 @@ const Menu: React.FC = () => {
     )
 }
 
-export default Menu
+export default  withRouter(Menu)

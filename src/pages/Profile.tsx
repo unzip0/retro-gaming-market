@@ -5,7 +5,7 @@ import Menu from './Menu';
 import './Home.css';
 
 
-const Home: React.FC<RouteComponentProps> = () => {
+const Profile: React.FC<RouteComponentProps> = () => {
     return (
         <IonPage>
             <Menu />
@@ -19,11 +19,11 @@ const Home: React.FC<RouteComponentProps> = () => {
                     <IonTitle>RGM</IonTitle>
                 </IonToolbar>
             </IonHeader>
+            
             <IonContent>
-                
             </IonContent>
         </IonPage>
     )
 }
 
-export default withRouter(Home)
+export default withRouter(Profile)
