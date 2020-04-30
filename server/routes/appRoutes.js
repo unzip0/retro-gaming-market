@@ -8,6 +8,10 @@ module.exports = function(app) {
         .get(controller.list_all_users);
     // .post(todoList.loginUser);
     app.route('/login')
-        .post(controller.login_user)
+        .post(controller.login_user);
+
+    app.route('/products')
+      .post(controller.get_all_products);
+    
    
 };

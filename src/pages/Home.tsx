@@ -1,22 +1,21 @@
-import React from 'react';
-import { IonPage, IonContent, IonHeader, IonToolbar, IonTitle, IonMenuButton, IonButtons, IonIcon } from "@ionic/react";
+import React, { useContext } from 'react';
+import { IonPage, IonContent } from "@ionic/react";
 import { RouteComponentProps, withRouter  } from "react-router";
-import './Home.css';
+import {AppContext} from '../App';
+import Header from '../components/Header';
 
+const Home: React.FC<RouteComponentProps> = ({ history }) => {
 
-const Home: React.FC<RouteComponentProps> = () => {
+    const context = useContext(AppContext);
+    console.log(context);
+
+    // if (!context.loggedIn){
+    //     history.push('/');
+    // }
+
     return (
         <IonPage>
-            <IonHeader>
-                <IonToolbar>
-                    <IonButtons slot="start">
-                        <IonMenuButton autoHide={false} >
-                            <IonIcon src="assets/icon/menu-icon.svg" />
-                        </IonMenuButton>
-                    </IonButtons>
-                    <IonTitle>RGM</IonTitle>
-                </IonToolbar>
-            </IonHeader>
+            <Header/>
             <IonContent>
                 
             </IonContent>

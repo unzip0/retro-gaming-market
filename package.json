@@ -23,6 +23,8 @@
     "ionicons": "^5.0.0",
     "mysql": "^2.18.1",
     "react": "^16.12.0",
+    "react-autocomplete": "^1.8.1",
+    "react-autocomplete-input": "^1.0.13",
     "react-dom": "^16.12.0",
     "react-redux": "^7.2.0",
     "react-router": "^5.1.2",
@@ -52,6 +54,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "1.5.2",
+    "@types/react-autocomplete": "^1.8.5",
     "nodemon": "^2.0.2",
     "react-scripts": "3.4.0"
   },

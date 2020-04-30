@@ -34,4 +34,19 @@ User.login = function (username, password, result){
     })
 }
 
+User.getProducts = function (product = null, result){
+    product = '%' + product + '%';
+    sql.query("SELECT name, DATE_FORMAT(release_date, '%d/%m/%Y') as release_date, platform, region, apporgproductimages.image_path, apporgproducts.id FROM apporgproducts INNER JOIN apporgproductimages ON product_id = apporgproducts.id WHERE name LIKE ?", product, function (err, res){
+        // sql.query("SELECT name, DATE_FORMAT(release_date, '%d/%m/%Y') as release_date, platform, region, apporgproductimages.image_path, apporgproducts.id FROM apporgproducts INNER JOIN apporgproductimages ON product_id = apporgproducts.id", function (err, res){
+        if(err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else{
+            console.log('QUERY RES', res);
+            result(null, res);
+        }
+    });
+}
+
 module.exports = User;

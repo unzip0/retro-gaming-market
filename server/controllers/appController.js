@@ -28,3 +28,18 @@ exports.login_user = function(req, res) {
         res.send(user);
     });
 };
+
+exports.get_all_products = function(req, res) {
+    if (!req.body.product){
+        res.status(400).send({ error: true, message: 'Provide product'});
+        return false;
+    }
+    User.getProducts(req.body.product, function(err, users){
+        console.log('get_all_products');
+        if (err){
+            res.send(err);
+        }
+        console.log('res', users);
+        res.send(users);
+    });
+};

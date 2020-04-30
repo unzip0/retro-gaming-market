@@ -9,7 +9,9 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const context = useContext(AppContext);
+    
     console.log(context);
+    
     function loginUser() {
         axios({
             method: 'post',
@@ -29,6 +31,9 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
         }).catch(error => {
             console.log(error);
         });
+        context.loggedIn = true;
+        
+        history.push('/home');
         //context.loggedIn = true;
         //context.setContext(true);
         console.log(context)

@@ -3,6 +3,7 @@ import { IonApp, IonRouterOutlet } from '@ionic/react';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import Product from './pages/Product';
 import { Route } from 'react-router-dom';
 import { IonReactRouter } from '@ionic/react-router';
 
@@ -24,7 +25,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import Menu from './pages/Menu';
+import Menu from './components/Menu';
 
 const defaultContext = {
   loggedIn: false,
@@ -48,6 +49,7 @@ const App: React.FC = () => {
       <IonReactRouter>
         <IonRouterOutlet>
             <Route path="/profile" component={Profile} exact />
+            <Route path="/product" component={Product} exact />
             <Route path="/home" component={Home} exact />
             <Route path="/" component={Login} exact />
         </IonRouterOutlet>
