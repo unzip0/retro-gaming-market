@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { IonPage, IonContent, IonGrid, IonRow, IonCol, IonInput, IonSelect, IonSelectOption } from "@ionic/react";
 import { RouteComponentProps, withRouter  } from "react-router";
-import Header from '../components/Header';
+import Header from '../../components/Header/Header';
 import './Product.css';
 // import { productsData } from '../data/products-data'; 
 import axios from 'axios';
@@ -14,7 +14,7 @@ const Product: React.FC<RouteComponentProps> = () => {
     const [precio, setPrecio] = useState('')
     const [condicion, setCondicion] = useState('')
     const [producto, setProducto] = useState('')
-    let products = Array();
+    let products = [];
 
     function getProducts(product){
         if (product.length > 2){

@@ -1,0 +1,24 @@
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    ion-img {
+        width: 20% !important;
+        display: block;
+        margin:auto;
+    }
+}
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+    /* For tablets: */
+    ion-img {
+        width: 50% !important;;
+        display: block;
+        margin:auto;
+    }
+}
+@media only screen and (max-width: 600px) {
+    /* For mobile phones: */
+    ion-img {
+        width: 50% !important;;
+        display: block;
+        margin:auto;
+    }
+}

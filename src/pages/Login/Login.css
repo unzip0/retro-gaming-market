@@ -13,7 +13,7 @@ ion-grid{
     vertical-align: middle;
 }
 ion-img {
-    width: 20%;
+    width: 100%;
 }
 @media only screen and (min-width: 768px) {
     /* For desktop: */
@@ -26,7 +26,7 @@ ion-img {
 @media only screen and (min-width: 600px) and (max-width: 768px) {
     /* For tablets: */
     ion-img {
-        width: 50%;
+        width: 75%;
         display: block;
         margin:auto;
     }
@@ -34,7 +34,7 @@ ion-img {
 @media only screen and (max-width: 600px) {
     /* For mobile phones: */
     ion-img {
-        width: 50%;
+        /* width: 50%; */
         display: block;
         margin:auto;
     }

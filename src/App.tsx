@@ -1,9 +1,9 @@
 import React from 'react';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
-import Login from './pages/Login';
-import Home from './pages/Home';
-import Profile from './pages/Profile';
-import Product from './pages/Product';
+import Login from './pages/Login/Login';
+import Home from './pages/Home/Home';
+import Profile from './pages/Profile/Profile';
+import Product from './pages/Product/Product';
 import { Route } from 'react-router-dom';
 import { IonReactRouter } from '@ionic/react-router';
 
@@ -25,7 +25,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import Menu from './components/Menu';
+import Menu from './components/Menu/Menu';
 
 const defaultContext = {
   loggedIn: false,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { IonHeader, IonToolbar, IonIcon, IonButtons, IonMenuButton, IonImg } from "@ionic/react";
+import './Header.css';
 
 const Header: React.FC = () => {
 

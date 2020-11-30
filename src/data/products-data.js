@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function productsData(product = null){
+export const productsData = (product = null) => {
     // if (product.length > 2){
         axios({
             method: 'POST',
@@ -11,7 +11,6 @@ export function productsData(product = null){
         }).then(response => {
             if (response.data.length > 0){
                 return response.data;
-                console.log(response.data);
             }
             return [];
         }).catch(error => {
