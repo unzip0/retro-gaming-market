@@ -1,6 +1,7 @@
 'use strict';
+const sql = require('./db.js');
+const bcrypt = require('bcryptjs');
 
-var sql = require('./db.js');
 sql.connect(function(err) {
     if (err) throw err;
 });
@@ -23,15 +24,27 @@ User.getUsers = function (result){
 }
 
 User.login = function (username, password, result){
-    sql.query('SELECT * FROM sysusers WHERE user_name = ? AND password = ?', [username, password], function(err, res) {
+    sql.query('SELECT id, user_name, email, password FROM sysusers WHERE user_name = ?', [username], function(err, res) {
         if (err){
             console.log("error login: ", err);
             result(err, null);
         }else{
-            console.log('QUERY', res);
-            result(null, res);
+            this.user = res[0];
+            bcrypt.compare(password, this.user.password, function(err, hash){
+                if (err){
+                    console.log("error login: ", err);
+                    result(err, null);
+                }else{
+                    if (hash){
+                        delete res[0].password;
+                        result(null, res[0]);
+                    }else{
+                        result('Password incorrecta',null);
+                    }
+                }
+            }); 
         }
-    })
+    });
 }
 
 User.getProducts = function (product = null, result){

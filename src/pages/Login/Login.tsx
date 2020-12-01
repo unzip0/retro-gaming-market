@@ -3,7 +3,6 @@ import { IonPage, IonContent, IonButton, IonInput, IonImg, IonGrid, IonRow, IonC
 import { RouteComponentProps, withRouter  } from "react-router";
 import './Login.css';
 import { login } from '../../data/login-data';
-import PropTypes from 'prop-types';
 
 
 const Login: React.FC<RouteComponentProps> = ({ history }) => {
