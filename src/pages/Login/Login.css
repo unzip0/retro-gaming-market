@@ -5,7 +5,7 @@ ion-input {
     background: #dd163b;
 } */
 ion-content {
-    --background: url('/assets/images/bg-login.webp') no-repeat 52% center/cover;
+    --background: url('../../assets/images/bg-login.webp') no-repeat 52% center/cover;
     /* opacity: 0.9; */
 }
 ion-grid{
