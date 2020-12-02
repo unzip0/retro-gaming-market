@@ -1,5 +1,3 @@
-'use strict';
-
 var User = require('../models/appModel.js');
 
 exports.list_all_users = function(req, res) {

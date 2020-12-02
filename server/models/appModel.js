@@ -1,4 +1,3 @@
-'use strict';
 const sql = require('./db.js');
 const bcrypt = require('bcryptjs');
 
