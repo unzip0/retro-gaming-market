@@ -18,24 +18,18 @@ exports.login = (req, res) => {
     .then(data => {
         bcrypt.compare(req.body.password, data.password, function(err, hash){
             if (err){
-                res.status(500).send({
-                    message: err || 'Compare password error'
-                })
+                res.send({data: null, code: -2, message: err});
             }else{
                 if (hash){
-                    res.send(data);
+                    res.send({data: data, code: 1, message: 'Login correcto'});
                 }else{
-                    res.status(500).send({
-                        message: 'Constraseña incorrecta'
-                    })
+                    res.send({data: null, code: -2, message: 'Contraseña incorrecta'});
                 }
             }
         }); 
     })
     .catch(err => {
-        res.status(500).send({
-            message: err.message || 'Error interno del servidor'
-        })
+        res.send({data: null, code: -3, message: 'Error interno del servidor'});
     });
 };
 
