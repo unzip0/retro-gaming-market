@@ -5,9 +5,9 @@ export const productsData = (product = null) => {
         axios({
             method: 'POST',
             url: 'http://localhost:3000/products', 
-            // data: {
-            //     product: product
-            // }       
+            data: {
+                product: product
+            }       
         }).then(response => {
             if (response.data.length > 0){
                 return response.data;

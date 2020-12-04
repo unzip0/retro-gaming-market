@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IonPage, IonContent, IonButton, IonInput, IonImg, IonGrid, IonRow, IonCol } from "@ionic/react"
 import { RouteComponentProps, withRouter  } from "react-router";
 import './Login.css';
-import { login } from '../../data/login-data';
+import { login } from '../../data/login.data';
 
 
 const Login: React.FC<RouteComponentProps> = ({ history }) => {
@@ -15,7 +15,7 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
                 <IonGrid>
                     <IonRow>
                         <IonCol>
-                            <IonImg class="logo" src="assets/images/rgm.jpg"/>
+                            <IonImg class="logo" src="../../assets/images/rgm.jpg"/>
                         </IonCol>
                     </IonRow>
                     <IonRow>
