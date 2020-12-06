@@ -1,60 +1,44 @@
 import React, { useState } from 'react';
-import { IonPage, IonContent, IonGrid, IonRow, IonCol, IonInput, IonSelect, IonSelectOption } from "@ionic/react";
+import { IonPage, IonContent, IonGrid, IonRow, IonCol, IonInput, IonSelect, IonSelectOption, IonSearchbar } from "@ionic/react";
 import { RouteComponentProps, withRouter  } from "react-router";
 import Header from '../../components/Header/Header';
 import './Product.css';
-// import { productsData } from '../data/products-data'; 
-import axios from 'axios';
-// import AutoComplete from 'react-autocomplete';
-
-
+import { useProductFetch } from '../../hooks/useProductFetch';
+import { ProductList } from '../../components/List/ProductList';
 
 const Product: React.FC<RouteComponentProps> = () => {
-    const [cantidad, setCantidad] = useState('')
-    const [precio, setPrecio] = useState('')
-    const [condicion, setCondicion] = useState('')
-    const [producto, setProducto] = useState('')
-    let products = [];
+    const [ cantidad, setCantidad ] = useState('')
+    const [ precio, setPrecio ] = useState('')
+    const [ condicion, setCondicion ] = useState('')
+    const [ producto, setProducto ] = useState('')
+    const [ searchText, setSearchText ] = useState('');
 
-    function getProducts(product){
-        if (product.length > 2){
-            axios({
-                method: 'POST',
-                url: 'http://localhost:3000/products', 
-                data: {
-                    product: product
-                }       
-            }).then(response => {
-                if (response.data.length > 0){
-                    return response.data;
-                }
-                return {};
-            }).catch(error => {
-                console.log(error);
-                return [];
-            });
-        }
-        
-    }
+    const {data, loading} = useProductFetch(searchText);
+    console.log('data', data);
     return (
         <IonPage>
             <Header/>
-            <IonContent class="ion-padding">
-                <IonGrid>
+            <IonSearchbar 
+                value={searchText}
+                onIonChange={(e : any) => setSearchText(e.target.value)}
+                placeholder="Introduce el nombre del producto"
+            />
+            <IonContent >
+              
+                { !loading && searchText.length > 0 && <ProductList products={data} /> }
+                {/* <IonGrid>
                     <IonRow>
                         <IonCol>
-                            {/* <AutoComplete
-                                items={ProductsData()}
-                            /> */}
-                            <IonInput 
+                           <IonInput 
                                 type="text"
                                 placeholder="Nombre del producto" 
-                                onIonChange={(e: any) => getProducts(e.target.value)}
+                                readonly
                                 color="light"
                             />
                         </IonCol>
-                        <IonCol class="hide">
+                        <IonCol>
                             <IonInput 
+                                value={cantidad}
                                 type="number"
                                 placeholder="Cantidad" 
                                 onIonChange={(e: any) => setCantidad(e.target.value)}
@@ -63,8 +47,10 @@ const Product: React.FC<RouteComponentProps> = () => {
                         </IonCol>
                     </IonRow>
                     <IonRow>
-                        <IonCol class="hide">
-                            <IonInput 
+                        <IonCol>
+                            <IonInput
+                                value={precio} 
+                                type="number"
                                 placeholder="Precio" 
                                 onIonChange={(e: any) => setPrecio(e.target.value)}
                                 color="light"
@@ -72,7 +58,7 @@ const Product: React.FC<RouteComponentProps> = () => {
                         </IonCol>
                     </IonRow>
                     <IonRow>
-                        <IonCol class="hide">
+                        <IonCol>
                             <IonSelect value={condicion} placeholder="Condición del juego" onIonChange={e => setCondicion(e.detail.value)}>
                                 <IonSelectOption value="NEW">Nuevo</IonSelectOption>
                                 <IonSelectOption value="USED-NEW">Usado como nuevo</IonSelectOption>
@@ -83,7 +69,7 @@ const Product: React.FC<RouteComponentProps> = () => {
                             </IonSelect>
                         </IonCol>
                     </IonRow>
-                </IonGrid>
+                </IonGrid> */}
             </IonContent>
         </IonPage>
     )
