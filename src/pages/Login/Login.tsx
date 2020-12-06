@@ -23,7 +23,7 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
             if (response.data.code === 1){
                 history.push('/home');
             }
-            console.log(response);
+            
         }).catch(error => {
             console.log(error);
         });
