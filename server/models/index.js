@@ -18,9 +18,11 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 const db = {};
 
 db.sequelize = sequelize;
-db.Sequelize = Sequelize;
 
 db.users = require('./user.model')(sequelize, Sequelize);
 db.products = require('./product.model')(sequelize, Sequelize);
+db.product_images = require('./product-images.model')(sequelize, Sequelize);
+
+db.products.hasOne(db.product_images, { foreignKey: 'product_id'});
 
 module.exports = db;
