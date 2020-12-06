@@ -12,29 +12,29 @@ ion-grid{
     padding-top: 10%;
     vertical-align: middle;
 }
-ion-img {
+.logo {
     width: 100%;
 }
 @media only screen and (min-width: 768px) {
     /* For desktop: */
-    ion-img {
-        width: 20%;
+    .logo {
+        width: 70% !important;
         display: block;
         margin:auto;
     }
 }
 @media only screen and (min-width: 600px) and (max-width: 768px) {
     /* For tablets: */
-    ion-img {
-        width: 75%;
+    .logo {
+        width: 70% !important;;
         display: block;
         margin:auto;
     }
 }
 @media only screen and (max-width: 600px) {
     /* For mobile phones: */
-    ion-img {
-        /* width: 50%; */
+    .logo {
+        width: 100% !important;
         display: block;
         margin:auto;
     }
