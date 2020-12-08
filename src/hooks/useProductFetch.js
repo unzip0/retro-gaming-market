@@ -8,7 +8,7 @@ export const useProductFetch = (product) => {
         loading: true,
     });
     useEffect(() => {
-        if (product){
+        if (product && product.length > 4){
             getProducts(product).then(
                 prods => {
                     setState({

@@ -25,7 +25,7 @@ const Product: React.FC<RouteComponentProps> = () => {
             />
             <IonContent >
               
-                { !loading && searchText.length > 0 && <ProductList products={data} /> }
+                { !loading && searchText.length > 4 && <ProductList products={data} /> }
                 {/* <IonGrid>
                     <IonRow>
                         <IonCol>
