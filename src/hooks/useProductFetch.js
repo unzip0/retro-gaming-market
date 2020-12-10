@@ -15,7 +15,6 @@ export const useProductFetch = (product) => {
                         data: prods,
                         loading: false
                     })
-                    console.log(prods);
                 }
             );
         }
