@@ -1,4 +1,4 @@
-ion-input {
+ion-input, ion-select {
     text-align: center;
 }
 /* ion-button {
@@ -9,7 +9,7 @@ ion-content {
     /* opacity: 0.9; */
 }
 ion-grid{
-    padding-top: 10%;
+    /* padding-top: 10%; */
     vertical-align: middle;
 }
 .logo {
