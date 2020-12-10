@@ -3,9 +3,10 @@ import { IonList, IonItem, IonLabel, IonAvatar, IonListHeader } from '@ionic/rea
 import './ProductList.css';
 const _URL = require("../../config/url.config.js");
 
-export const ProductList = ({products}) => {
+export const ProductList = ({products, selectedProduct}) => {
 
     const getItemData = (product) => {
+        selectedProduct(product);
         console.log(product);
     };
 
@@ -24,7 +25,7 @@ export const ProductList = ({products}) => {
                                 slot="start" 
                                 class="md hydrated product-avatar-list"
                             >
-                               <img src={product.image_path ? `${_URL.IMAGES}${product.image_path}` : '/assets/images/rgm.jpg'} alt=""/>
+                               <img src={product.image_path ? `${_URL.IMAGES}${product.image_path}` : `${_URL.IMAGE_NOT_FOUND}`} alt=""/>
                             </IonAvatar>
                             <IonLabel>
                                 <h2>{product.name}</h2>
