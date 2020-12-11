@@ -6,8 +6,21 @@ const _URL = require("../../config/url.config.js");
 export const ProductList = ({products, selectedProduct}) => {
 
     const getItemData = (product) => {
-        selectedProduct(product);
-        console.log(product);
+        selectedProduct({
+            id: product.id,
+            name: product.name,
+            platform: product.platform,
+            region: product.region,
+            release_date: product.release_date,
+            cantidad: '',
+            precio: '',
+            condicion_juego: '',
+            condicion_extras: '',
+            condicion_caja: '',
+            condicion_caratula: '',
+            condicion_manual: '',
+            image_path: product.image_path
+        });
     };
 
     return (
