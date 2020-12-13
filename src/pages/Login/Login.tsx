@@ -1,47 +1,40 @@
 import React, { useContext, useState } from 'react';
 import { IonPage, IonContent, IonButton, IonInput, IonImg, IonGrid, IonRow, IonCol } from "@ionic/react"
 import { RouteComponentProps, withRouter  } from "react-router";
+import { UserContext } from '../../context/UserContext';
+import { Alert } from '../../components/Alert/Alert';
+import { getLogin } from '../../helpers/getLogin';
 import './Login.css';
-import axios from 'axios';
-import { UserContext } from '../../UserContext';
-const _URL = require("../../config/url.config.js");
-
 
 const Login: React.FC<RouteComponentProps> = ({ history }) => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
-    const userContext = useContext(UserContext);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [alert, setAlert] = useState(false);
+    const { updateUser } = useContext(UserContext);
     
-    const login = () => {
-        axios({
-            method: 'POST',
-            url: _URL.LOGIN,
-            data: {
-                username: username
-                , password: password
-            }
-    
-        }).then(response => {
-            if (response.data.code === 1){
-                userContext.setUser({
-                    id: response.data.data.id,
-                    email: response.data.data.email,
-                    name: response.data.data.first_name,
-                    last_name: response.data.data.last_name,
-                    user_name: response.data.data.user_name,
-                    phone: response.data.data.phone,
-                });
-                history.push('/home');
-            }
-            
-        }).catch(error => {
-            console.log(error);
-        });
+    const handleLogin = () => {
+        getLogin(username, password)
+            .then( response => {
+                if (response.code > 0){
+                    updateUser({
+                        id: response.data.id,
+                        email: response.data.email,
+                        name: response.data.first_name,
+                        last_name: response.data.last_name,
+                        user_name: response.data.user_name,
+                        phone: response.data.phone,
+                    });
+                    history.push('/home');
+                }else{
+                    setAlert(true);
+                }
+            });
     };
 
     return (
         <IonPage>
             <IonContent class="ion-padding">
+                { alert && <Alert header='Login' subHeader='Error de login' message='Credenciales no encontradas' show={!alert}/>}
                 <IonGrid>
                     <IonRow>
                         <IonCol>
@@ -71,7 +64,7 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
                         <IonCol class="ion-text-center">
                             <IonButton 
                                 color="danger" 
-                                onClick={login}
+                                onClick={handleLogin}
                             >
                                 Login
                             </IonButton>
