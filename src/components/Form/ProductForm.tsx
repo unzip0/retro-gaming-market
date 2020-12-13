@@ -1,6 +1,6 @@
 import React from 'react';
 import { IonGrid, IonRow, IonCol, IonInput, IonImg, IonButton } from '@ionic/react';
-import { ConditionSelect } from '../../components/Select/ConditionSelect';
+import { ConditionSelect } from '../Select/ConditionSelect';
 const _URL = require("../../config/url.config.js");
 
 export const ProductForm = ({producto, changeProductState, handleChange}) => {
@@ -33,7 +33,7 @@ export const ProductForm = ({producto, changeProductState, handleChange}) => {
                             value={producto.cantidad}
                             type="number"
                             placeholder="Cantidad" 
-                            onIonChange={(e) => changeProductState('cantidad', e.target.value)}
+                            onIonChange={(e: any) => changeProductState('cantidad', e.target.value)}
                             color="light"
                         />
                     </IonCol>
@@ -45,7 +45,7 @@ export const ProductForm = ({producto, changeProductState, handleChange}) => {
                             value={producto.precio} 
                             type="number"
                             placeholder="Precio" 
-                            onIonChange={(e) => changeProductState('precio', e.target.value)}
+                            onIonChange={(e: any) => changeProductState('precio', e.target.value)}
                             color="light"
                         />
                     </IonCol>
