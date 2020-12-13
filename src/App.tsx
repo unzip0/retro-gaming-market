@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { IonApp } from '@ionic/react';
-import Menu from './components/Menu/Menu';
 import { AppRouter } from './router/AppRouter';
-import { UserContext, User } from './UserContext';
+import { UserProvider } from './context/UserContext';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -21,17 +20,14 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App: React.FC = () => {
-  
-  const [ user, setUser ] = useState<User>();
 
   return (
   <>
-    <UserContext.Provider value={{ user: user, setUser: setUser }}>
+    <UserProvider >
       <IonApp>
           <AppRouter />
       </IonApp>
-      <Menu />
-    </UserContext.Provider>
+    </UserProvider>
   </>
 )};
 
