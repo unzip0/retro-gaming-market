@@ -1,18 +1,13 @@
 import React, { useContext } from 'react';
 import { IonPage, IonContent } from "@ionic/react";
-import { RouteComponentProps, withRouter  } from "react-router";
-import {AppContext} from '../../App';
+import { RouteComponentProps } from "react-router";
 import Header from '../../components/Header/Header';
+import { UserContext } from '../../UserContext';
 
 const Home: React.FC<RouteComponentProps> = ({ history }) => {
 
-    const context = useContext(AppContext);
-    console.log(context);
-
-    // if (!context.loggedIn){
-    //     history.push('/');
-    // }
-
+    const userContext = useContext(UserContext);
+    console.log(userContext);
     return (
         <IonPage>
             <Header/>
@@ -23,4 +18,4 @@ const Home: React.FC<RouteComponentProps> = ({ history }) => {
     )
 }
 
-export default withRouter(Home)
+export default Home;

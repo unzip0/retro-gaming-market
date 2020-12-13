@@ -3,14 +3,14 @@ import { IonPage, IonContent, IonButton, IonInput, IonImg, IonGrid, IonRow, IonC
 import { RouteComponentProps, withRouter  } from "react-router";
 import './Login.css';
 import axios from 'axios';
-import { UserContext } from './UserContext';
+import { UserContext } from '../../UserContext';
 const _URL = require("../../config/url.config.js");
 
 
 const Login: React.FC<RouteComponentProps> = ({ history }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const { user } = useContext(UserContext);
+    const userContext = useContext(UserContext);
     
     const login = () => {
         axios({
@@ -23,12 +23,14 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
     
         }).then(response => {
             if (response.data.code === 1){
-                user.id = response.data.data.id;
-                user.email = response.data.data.email;
-                user.name = response.data.data.first_name;
-                user.last_name = response.data.data.last_name;
-                user.user_name = response.data.data.user_name;
-                user.phone = response.data.data.phone;
+                userContext.setUser({
+                    id: response.data.data.id,
+                    email: response.data.data.email,
+                    name: response.data.data.first_name,
+                    last_name: response.data.data.last_name,
+                    user_name: response.data.data.user_name,
+                    phone: response.data.data.phone,
+                });
                 history.push('/home');
             }
             
