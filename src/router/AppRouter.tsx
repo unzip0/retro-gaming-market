@@ -6,6 +6,7 @@ import Product from '../pages/Product/Product';
 import { Route } from 'react-router-dom';
 import { IonReactRouter } from '@ionic/react-router';
 import { IonRouterOutlet } from '@ionic/react';
+import Menu from '../components/Menu/Menu';
 
 
 export const AppRouter: React.FC = () => {
@@ -17,6 +18,7 @@ export const AppRouter: React.FC = () => {
                 <Route exact path="/home" component={Home} />
                 <Route exact path="/" component={Login} />
             </IonRouterOutlet>
+            <Menu />
       </IonReactRouter>
     )
 }
