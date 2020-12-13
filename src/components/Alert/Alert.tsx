@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
-import { IonAlert, IonButton, IonContent } from '@ionic/react';
+import React, { FunctionComponent, useState } from 'react';
+import { IonAlert } from '@ionic/react';
 
 
+export const Alert: FunctionComponent<any> = ({ header, subHeader, message} : any) => {
 
-export const Alert: React.FC = () => {
-
-    const [show, setShow] = useState(false);
-
+    const [show, setShow] = useState(true);
+    
     return (
         <IonAlert
             isOpen={show}
             onDidDismiss={() => setShow(false)}
             cssClass='my-custom-class'
-            header={'Alert'}
-            subHeader={'Subtitle'}
-            message={'This is an alert message.'}
+            header={header}
+            subHeader={subHeader}
+            message={message}
             buttons={['OK']}
         />
     );
