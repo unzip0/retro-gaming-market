@@ -31,10 +31,14 @@ const Login: React.FC<RouteComponentProps> = ({ history }) => {
             });
     };
 
+    const handleAlert = (alert) => {
+        setAlert(alert);
+    }
+
     return (
         <IonPage>
             <IonContent class="ion-padding">
-                { alert && <Alert header='Login' subHeader='Error de login' message='Credenciales no encontradas' show={!alert}/>}
+                { alert && <Alert header='Login' subHeader='Error de login' message='Credenciales no encontradas' shown={handleAlert}/>}
                 <IonGrid>
                     <IonRow>
                         <IonCol>
